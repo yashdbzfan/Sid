@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <meta name="description" content="Academic curriculum vitae and professional profile for [Full Name], neurosurgeon.">
+  <title>[Full Name] | Neurosurgery CV</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f6f2;
+      --white: #fff;
+      --ink: #172925;
+      --muted: #586a65;
+      --line: #d9e0da;
+      --teal: #116b61;
+      --teal-dark: #0a4e47;
+      --coral: #d55e48;
+      --lime: #dce87a;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", "Aptos", sans-serif;
+      --content: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    button { color: inherit; font: inherit; }
+    :focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+    .skip-link {
+      position: absolute; top: 8px; left: 8px; z-index: 20;
+      padding: 10px 14px; color: var(--white); background: var(--teal-dark);
+      transform: translateY(-150%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .wrap { width: min(var(--content), calc(100% - 64px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      border-bottom: 1px solid rgba(23, 41, 37, .12);
+      background: rgba(245, 246, 242, .94); backdrop-filter: blur(12px);
+    }
+    .nav-row { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .wordmark { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 700; letter-spacing: 0; }
+    .mark { display: grid; place-items: center; width: 34px; height: 34px; color: var(--white); background: var(--teal); border-radius: 50%; font-family: var(--serif); font-size: 15px; }
+    .wordmark-name { font-size: 13px; }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; }
+    .nav-links a:hover { color: var(--teal-dark); }
+    .nav-links .nav-contact { padding: 9px 15px; color: var(--white); background: var(--teal-dark); border-radius: 3px; }
+    .menu-button { display: none; border: 1px solid var(--line); background: var(--white); padding: 8px 12px; border-radius: 3px; }
+
+    .hero { position: relative; overflow: hidden; padding: 76px 0 70px; }
+    .hero::before {
+      position: absolute; top: -150px; right: -170px; width: 490px; height: 490px;
+      border: 1px solid rgba(17, 107, 97, .12); border-radius: 50%; content: "";
+      box-shadow: 0 0 0 34px rgba(17, 107, 97, .025), 0 0 0 72px rgba(17, 107, 97, .02);
+      pointer-events: none;
+    }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 66px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--teal); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { width: 26px; height: 1px; background: var(--coral); content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 690px; margin: 20px 0 20px; font-family: var(--serif); font-size: clamp(46px, 6vw, 78px); font-weight: 400; line-height: 1.02; letter-spacing: 0; }
+    h1 span { color: var(--teal); }
+    .hero-copy { max-width: 570px; margin-bottom: 28px; color: var(--muted); font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 9px; padding: 10px 16px; border: 1px solid var(--teal-dark); border-radius: 3px; color: var(--white); background: var(--teal-dark); font-size: 13px; font-weight: 650; text-decoration: none; cursor: pointer; }
+    .button:hover { background: var(--teal); }
+    .button.secondary { color: var(--teal-dark); background: transparent; }
+    .button.secondary:hover { background: rgba(17, 107, 97, .07); }
+    .button svg { width: 16px; height: 16px; }
+    .hero-visual { position: relative; width: 100%; aspect-ratio: 1.08; }
+    .hero-photo { position: absolute; inset: 0 30px 34px 0; overflow: hidden; background: #d5e0d9; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .cv-stamp { position: absolute; top: 22px; right: 0; display: grid; place-content: center; width: 94px; height: 94px; border: 1px solid var(--teal-dark); border-radius: 50%; color: var(--teal-dark); background: var(--lime); text-align: center; transform: rotate(8deg); }
+    .cv-stamp span:first-child { font-family: var(--serif); font-size: 25px; line-height: 1.1; }
+    .cv-stamp span:last-child { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .quick-facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 70px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .fact { padding: 19px 18px 19px 0; }
+    .fact + .fact { padding-left: 22px; border-left: 1px solid var(--line); }
+    .fact-label { display: block; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .fact-value { display: block; margin-top: 4px; font-family: var(--serif); font-size: 19px; }
+
+    .section { padding: 82px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 35px; }
+    .section-kicker { margin-bottom: 8px; color: var(--coral); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    h2 { margin-bottom: 0; font-family: var(--serif); font-size: clamp(34px, 4vw, 47px); font-weight: 400; line-height: 1.12; letter-spacing: 0; }
+    .section-intro { max-width: 430px; margin: 0 0 2px; color: var(--muted); font-size: 14px; }
+    .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
+    .profile-text { max-width: 620px; color: var(--muted); font-size: 16px; }
+    .profile-text strong { color: var(--ink); font-weight: 650; }
+    .focus-list { display: flex; flex-wrap: wrap; align-content: start; gap: 9px; }
+    .focus-tag { padding: 9px 13px; border: 1px solid var(--line); border-radius: 2px; color: var(--teal-dark); background: rgba(255,255,255,.56); font-size: 12px; }
+    .focus-note { flex-basis: 100%; margin: 12px 0 0; color: var(--muted); font-size: 12px; }
+
+    .timeline { border-top: 1px solid var(--line); }
+    .timeline-entry { display: grid; grid-template-columns: 150px 1fr 32px; gap: 20px; align-items: start; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .timeline-date { padding-top: 5px; color: var(--teal); font-size: 12px; font-weight: 700; }
+    .timeline-entry h3 { margin: 0 0 5px; font-size: 16px; font-weight: 650; }
+    .timeline-entry p { margin: 0; color: var(--muted); font-size: 13px; }
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    .entry-toggle { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--teal); font-size: 17px; line-height: 1; transition: color .2s ease, background-color .2s ease, border-color .2s ease; }
+    details[open] + .entry-toggle { color: var(--white); background: var(--teal); border-color: var(--teal); }
+    .detail-copy { display: block; grid-column: 2 / 3; max-height: 0; overflow: hidden; padding: 0; color: var(--muted); font-size: 13px; opacity: 0; transform: translateY(-4px); transition: max-height .28s ease, padding .28s ease, opacity .2s ease, transform .28s ease; }
+    details[open] > .detail-copy { max-height: 12rem; padding-top: 3px; opacity: 1; transform: translateY(0); }
+    .detail-copy p:last-child { margin-bottom: 0; }
+
+    .research-band { color: var(--white); background: var(--teal-dark); }
+    .research-band .section-kicker { color: var(--lime); }
+    .research-band .section-intro { color: rgba(255,255,255,.73); }
+    .research-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .research-grid h2 { max-width: 420px; }
+    .research-statement { max-width: 570px; color: rgba(255,255,255,.79); font-size: 16px; }
+    .research-areas { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; margin-top: 25px; }
+    .research-area { padding: 12px 0; border-top: 1px solid rgba(255,255,255,.23); font-family: var(--serif); font-size: 17px; }
+
+    .pub-tools { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pub-tools input, .pub-tools select { min-height: 42px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); background: var(--white); font: inherit; font-size: 13px; }
+    .pub-tools input { width: min(260px, 100%); }
+    .pub-list { border-top: 1px solid var(--line); }
+    .publication { display: grid; grid-template-columns: 62px 1fr auto; gap: 20px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .publication[hidden] { display: none; }
+    .pub-year { color: var(--coral); font-family: var(--serif); font-size: 21px; }
+    .pub-title { margin: 0 0 4px; font-size: 15px; font-weight: 650; }
+    .pub-meta { margin: 0; color: var(--muted); font-size: 12px; }
+    .pub-type { align-self: center; padding: 5px 8px; border: 1px solid var(--line); color: var(--muted); font-size: 10px; text-transform: uppercase; }
+    .empty-state { display: none; padding: 25px 0; color: var(--muted); font-size: 14px; }
+
+    .contact-section { padding-bottom: 56px; }
+    .contact-panel { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 38px 42px; color: var(--white); background: var(--coral); }
+    .contact-panel h2 { max-width: 580px; font-size: clamp(30px, 4vw, 44px); }
+    .contact-panel p { max-width: 540px; margin: 12px 0 0; color: rgba(255,255,255,.87); font-size: 13px; }
+    .contact-panel .button { flex-shrink: 0; border-color: var(--white); color: var(--ink); background: var(--white); }
+    .contact-panel .button:hover { background: var(--lime); }
+    footer { padding: 22px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; }
+    .disclaimer { max-width: 770px; margin: 0; }
+    .last-reviewed { white-space: nowrap; }
+    .reveal { animation: arrive .65s both; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 780px) {
+      .wrap { width: min(100% - 40px, var(--content)); }
+      .nav-row { min-height: 64px; }
+      .menu-button { display: inline-flex; align-items: center; gap: 8px; }
+      .nav-links { display: none; position: absolute; top: 63px; right: 20px; left: 20px; padding: 13px; border: 1px solid var(--line); background: var(--paper); box-shadow: 0 12px 28px rgba(23,41,37,.1); }
+      .nav-links.is-open { display: grid; gap: 0; }
+      .nav-links a { padding: 12px; }
+      .nav-links .nav-contact { margin-top: 5px; text-align: center; }
+      .hero { padding: 55px 0 50px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 38px; }
+      h1 { font-size: clamp(47px, 11vw, 72px); }
+      .hero-visual { aspect-ratio: 1.08; }
+      .hero-photo { right: 22px; bottom: 25px; }
+      .cv-stamp { width: 78px; height: 78px; }
+      .quick-facts { margin-top: 48px; }
+      .section { padding: 62px 0; }
+      .section-head { align-items: start; flex-direction: column; margin-bottom: 28px; }
+      .profile-grid, .research-grid { grid-template-columns: 1fr; gap: 25px; }
+      .timeline-entry { grid-template-columns: 98px 1fr 30px; gap: 12px; }
+      .detail-copy { grid-column: 2 / 4; }
+      .contact-panel { align-items: start; flex-direction: column; padding: 30px 25px; }
+    }
+    @media (max-width: 480px) {
+      .wrap { width: calc(100% - 32px); }
+      .hero { padding-top: 44px; }
+      .hero-copy { font-size: 15px; }
+      .quick-facts { grid-template-columns: 1fr; }
+      .fact, .fact + .fact { padding: 12px 0; border-left: 0; }
+      .fact + .fact { border-top: 1px solid var(--line); }
+      .fact-value { font-size: 17px; }
+      .timeline-entry { grid-template-columns: 1fr 30px; }
+      .timeline-date { grid-column: 1; }
+      .timeline-entry > details { grid-column: 1; grid-row: 2; }
+      .timeline-entry > .entry-toggle { grid-column: 2; grid-row: 1 / 3; }
+      .detail-copy { grid-column: 1 / 3; }
+      .publication { grid-template-columns: 45px 1fr; gap: 12px; }
+      .pub-type { grid-column: 2; justify-self: start; }
+      .pub-tools { width: 100%; }
+      .pub-tools input, .pub-tools select { flex: 1; min-width: 130px; }
+      .research-areas { grid-template-columns: 1fr; }
+      .footer-row { flex-direction: column; }
+      .last-reviewed { white-space: normal; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+    @media print {
+      :root { --paper: #fff; }
+      body { font-size: 11pt; }
+      .topbar, .hero-actions, .pub-tools, .contact-section, .cv-stamp { display: none !important; }
+      .wrap { width: 100%; }
+      .hero, .section { padding: 24px 0; }
+      .hero-grid { grid-template-columns: 1.2fr .8fr; gap: 24px; }
+      .hero-visual { aspect-ratio: 1.08; }
+      .hero-photo { inset: 0; }
+      .quick-facts { margin-top: 24px; }
+      .section { break-inside: avoid; }
+      details:not([open]) > :not(summary) { display: block !important; }
+      .entry-toggle { display: none; }
+      .detail-copy { max-height: none; overflow: visible; padding-top: 3px; opacity: 1; transform: none; }
+      .research-band { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      footer { padding-top: 12px; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="topbar">
+    <div class="wrap nav-row">
+      <a class="wordmark" href="#top" aria-label="[Full Name], home">
+        <span class="mark" aria-hidden="true">N</span>
+        <span class="wordmark-name">[Full Name], MD</span>
+      </a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        Menu
+      </button>
+      <nav class="nav-links" id="primary-nav" aria-label="Primary navigation">
+        <a href="#profile">Profile</a>
+        <a href="#appointments">Appointments</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a class="nav-contact" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="reveal">
+            <div class="eyebrow">Curriculum vitae · 2026</div>
+            <h1 id="hero-title">[Full Name]<br><span>Neurosurgeon</span></h1>
+            <p class="hero-copy">Academic profile, clinical appointments, and selected scholarship in [subspecialty or area of focus].</p>
+            <div class="hero-actions">
+              <button class="button" id="print-cv" type="button">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M7 14h10v7H7z"/><path d="M17 11h.01"/></svg>
+                Print / save CV
+              </button>
+              <a class="button secondary" href="#appointments">Explore profile <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <div class="hero-visual reveal">
+            <div class="hero-photo">
+              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85" alt="Clinician checking a phone during work" fetchpriority="high">
+            </div>
+          </div>
+        </div>
+        <div class="quick-facts" aria-label="Professional overview">
+          <div class="fact"><span class="fact-label">Academic appointment</span><span class="fact-value">[Title], [Institution]</span></div>
+          <div class="fact"><span class="fact-label">Clinical focus</span><span class="fact-value">[Subspecialty / focus]</span></div>
+          <div class="fact"><span class="fact-label">Professional location</span><span class="fact-value">[City, State]</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="profile" aria-labelledby="profile-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="section-kicker">01 / Profile</p><h2 id="profile-title">A little about my work</h2></div>
+          <p class="section-intro">A concise introduction for colleagues, academic committees, and professional collaborators.</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-text">
+            <p><strong>[Full Name]</strong> is a neurosurgeon and [academic role] at [institution]. Their clinical and academic work focuses on <strong>[verified specialty areas]</strong>, with an emphasis on thoughtful evaluation, evidence-informed treatment, and multidisciplinary collaboration.</p>
+            <p>In addition to clinical practice, [Full Name] contributes to [teaching, research, or leadership area]. This profile summarizes current appointments, training, scholarship, and professional service.</p>
+          </div>
+          <div class="focus-list" aria-label="Areas of focus">
+            <span class="focus-tag">[Clinical focus]</span>
+            <span class="focus-tag">[Research area]</span>
+            <span class="focus-tag">[Technique or population]</span>
+            <span class="focus-tag">[Teaching interest]</span>
+            <p class="focus-note">Replace each bracketed field with verified information before publication.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="appointments" aria-labelledby="appointments-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="section-kicker">02 / Experience</p><h2 id="appointments-title">Appointments &amp; service</h2></div>
+          <p class="section-intro">Current roles first. Expand an entry for responsibilities or selected contributions.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-entry">
+            <span class="timeline-date">[Year] – Present</span>
+            <details>
+              <summary><h3>[Academic rank], Department of Neurosurgery</h3><p>[University or health system] · [City, State]</p></summary>
+              <div class="detail-copy"><p>[Add verified clinical, academic, or leadership responsibilities. Keep institutional descriptions precise and approved.]</p></div>
+            </details>
+            <span class="entry-toggle" aria-hidden="true">+</span>
+          </article>
+          <article class="timeline-entry">
+            <span class="timeline-date">[Year] – [Year]</span>
+            <details>
+              <summary><h3>[Prior role or appointment]</h3><p>[Department or organization] · [City, State]</p></summary>
+              <div class="detail-copy"><p>[Add a concise description of the role and relevant contributions.]</p></div>
+            </details>
+            <span class="entry-toggle" aria-hidden="true">+</span>
+          </article>
+          <article class="timeline-entry">
+            <span class="timeline-date">[Year] – Present</span>
+            <details>
+              <summary><h3>[Committee, society, or community role]</h3><p>[Organization] · [Role]</p></summary>
+              <div class="detail-copy"><p>[Add dates, scope, and selected contributions. Omit any confidential or patient-identifying details.]</p></div>
+            </details>
+            <span class="entry-toggle" aria-hidden="true">+</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education" aria-labelledby="education-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="section-kicker">03 / Training</p><h2 id="education-title">Education &amp; credentials</h2></div>
+          <p class="section-intro">List programs, degrees, and board certifications with accurate dates and awarding bodies.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-entry">
+            <span class="timeline-date">[Year] – [Year]</span>
+            <details>
+              <summary><h3>[Fellowship / subspecialty training]</h3><p>[Institution] · [City, State]</p></summary>
+              <div class="detail-copy"><p>[Optional: verified focus, faculty role, or distinction.]</p></div>
+            </details>
+            <span class="entry-toggle" aria-hidden="true">+</span>
+          </article>
+          <article class="timeline-entry">
+            <span class="timeline-date">[Year] – [Year]</span>
+            <details>
+              <summary><h3>Residency, [Neurosurgery]</h3><p>[Institution] · [City, State]</p></summary>
+              <div class="detail-copy"><p>[Optional: verified program details or distinction.]</p></div>
+            </details>
+            <span class="entry-toggle" aria-hidden="true">+</span>
+          </article>
+          <article class="timeline-entry">
+            <span class="timeline-date">[Year]</span>
+            <details>
+              <summary><h3>[Degree], [Field]</h3><p>[University] · [City, State]</p></summary>
+              <div class="detail-copy"><p>[Optional: thesis, honors, or relevant academic work.]</p></div>
+            </details>
+            <span class="entry-toggle" aria-hidden="true">+</span>
+          </article>
+          <article class="timeline-entry">
+            <span class="timeline-date">[Year / status]</span>
+            <details>
+              <summary><h3>Board certification &amp; licensure</h3><p>[Certifying board] · [State license, if appropriate]</p></summary>
+              <div class="detail-copy"><p>Verify status, dates, and any public verification links before publishing.</p></div>
+            </details>
+            <span class="entry-toggle" aria-hidden="true">+</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research-band" id="research" aria-labelledby="research-title">
+      <div class="wrap research-grid">
+        <div><p class="section-kicker">04 / Scholarship</p><h2 id="research-title">Questions that move the field forward</h2></div>
+        <div>
+          <p class="research-statement">[Summarize your research program, its aims, and your role. Support factual claims with public sources and avoid patient-identifying examples.]</p>
+          <div class="research-areas">
+            <div class="research-area">[Research theme one]</div>
+            <div class="research-area">[Research theme two]</div>
+            <div class="research-area">[Clinical trials / methods]</div>
+            <div class="research-area">[Teaching / collaboration]</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications" aria-labelledby="publications-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="section-kicker">05 / Selected work</p><h2 id="publications-title">Publications</h2></div>
+          <div class="pub-tools" role="search" aria-label="Filter publications">
+            <label class="skip-link" for="pub-search">Search publications</label>
+            <input id="pub-search" type="search" placeholder="Search publications" autocomplete="off">
+            <label class="skip-link" for="year-filter">Filter by year</label>
+            <select id="year-filter" aria-label="Filter publications by year"><option value="all">All years</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option></select>
+          </div>
+        </div>
+        <div class="pub-list" id="pub-list">
+          <article class="publication" data-year="2026" data-search="[publication title] [author names] [journal]">
+            <span class="pub-year">2026</span><div><h3 class="pub-title">[Publication title]</h3><p class="pub-meta">[Authors] · [Journal] · DOI: [verified DOI]</p></div><span class="pub-type">Original research</span>
+          </article>
+          <article class="publication" data-year="2025" data-search="[publication title] [author names] [journal]">
+            <span class="pub-year">2025</span><div><h3 class="pub-title">[Publication title]</h3><p class="pub-meta">[Authors] · [Journal] · PMID: [verified PubMed ID]</p></div><span class="pub-type">Review</span>
+          </article>
+          <article class="publication" data-year="2024" data-search="[publication title] [author names] [journal]">
+            <span class="pub-year">2024</span><div><h3 class="pub-title">[Publication title]</h3><p class="pub-meta">[Authors] · [Journal] · DOI: [verified DOI]</p></div><span class="pub-type">Book chapter</span>
+          </article>
+        </div>
+        <p class="empty-state" id="empty-state" role="status">No publications match those filters.</p>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-panel">
+        <div><p class="section-kicker">06 / Contact</p><h2 id="contact-title">For academic and professional inquiries</h2><p>For patient care or referrals, use the official hospital contact and secure patient portal. Do not send medical information by email.</p></div>
+        <a class="button" href="mailto:[professional-email]">Email [Full Name] <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <p class="disclaimer">This professional profile is for general information and does not provide medical advice or create a doctor-patient relationship. For emergencies, call 911. Views expressed are personal unless otherwise stated.</p>
+      <span class="last-reviewed">Last reviewed: [Month YYYY]</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector("#menu-button");
+    const primaryNav = document.querySelector("#primary-nav");
+    const printButton = document.querySelector("#print-cv");
+    const searchInput = document.querySelector("#pub-search");
+    const yearFilter = document.querySelector("#year-filter");
+    const publications = [...document.querySelectorAll(".publication")];
+    const emptyState = document.querySelector("#empty-state");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      primaryNav.classList.toggle("is-open", !isOpen);
+    });
+
+    primaryNav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        menuButton.setAttribute("aria-expanded", "false");
+        primaryNav.classList.remove("is-open");
+      }
+    });
+
+    printButton.addEventListener("click", () => window.print());
+
+    function filterPublications() {
+      const query = searchInput.value.trim().toLowerCase();
+      const year = yearFilter.value;
+      let visibleCount = 0;
+
+      publications.forEach((publication) => {
+        const matchesQuery = publication.dataset.search.toLowerCase().includes(query);
+        const matchesYear = year === "all" || publication.dataset.year === year;
+        const isVisible = matchesQuery && matchesYear;
+        publication.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      emptyState.style.display = visibleCount === 0 ? "block" : "none";
+    }
+
+    searchInput.addEventListener("input", filterPublications);
+    yearFilter.addEventListener("change", filterPublications);
+
+    document.querySelectorAll(".timeline-entry details").forEach((details) => {
+      const indicator = details.parentElement.querySelector(".entry-toggle");
+      indicator.addEventListener("click", () => { details.open = !details.open; });
+      details.addEventListener("toggle", () => { indicator.textContent = details.open ? "−" : "+"; });
+    });
+  </script>
+</body>
+</html>
