@@ -56,6 +56,7 @@
     .nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; }
     .nav-links a:hover { color: var(--teal-dark); }
     .nav-links .nav-contact { padding: 9px 15px; color: var(--white); background: var(--teal-dark); border-radius: 3px; }
+    .nav-links .nav-contact:hover { color: #000; }
     .menu-button { display: none; border: 1px solid var(--line); background: var(--white); padding: 8px 12px; border-radius: 3px; }
 
     .hero { position: relative; overflow: hidden; padding: 76px 0 70px; }
@@ -103,6 +104,9 @@
     .focus-note { flex-basis: 100%; margin: 12px 0 0; color: var(--muted); font-size: 12px; }
 
     .timeline { border-top: 1px solid var(--line); }
+    .timeline-actions { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+    .timeline-control { padding: 6px 0; border: 0; color: var(--teal-dark); background: transparent; font-size: 12px; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+    .timeline-control:hover { color: var(--coral); }
     .timeline-entry { display: grid; grid-template-columns: 150px 1fr 32px; gap: 20px; align-items: start; padding: 22px 0; border-bottom: 1px solid var(--line); }
     .timeline-date { padding-top: 5px; color: var(--teal); font-size: 12px; font-weight: 700; }
     .timeline-entry h3 { margin: 0 0 5px; font-size: 16px; font-weight: 650; }
@@ -142,6 +146,18 @@
     .contact-panel p { max-width: 540px; margin: 12px 0 0; color: rgba(255,255,255,.87); font-size: 13px; }
     .contact-panel .button { flex-shrink: 0; border-color: var(--white); color: var(--ink); background: var(--white); }
     .contact-panel .button:hover { background: var(--lime); }
+    .contact-dialog { width: min(480px, calc(100% - 32px)); padding: 0; border: 1px solid var(--line); color: var(--ink); background: var(--paper); box-shadow: 0 24px 80px rgba(10, 36, 31, .28); }
+    .contact-dialog::backdrop { background: rgba(10, 36, 31, .55); backdrop-filter: blur(3px); }
+    .dialog-content { padding: 30px; }
+    .dialog-heading { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+    .dialog-heading h2 { margin: 0 0 6px; font: 32px/1.1 var(--serif); }
+    .dialog-heading p { color: var(--muted); font-size: 13px; }
+    .dialog-close { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: transparent; font-size: 20px; cursor: pointer; }
+    .contact-methods { display: grid; gap: 10px; margin-top: 15px; }
+    .contact-method { display: grid; gap: 3px; padding: 15px 16px; border: 1px solid var(--line); color: var(--teal-dark); background: var(--white); text-decoration: none; }
+    .contact-method:hover { border-color: var(--teal); background: rgba(17,107,97,.06); }
+    .contact-method span { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .contact-method strong { overflow-wrap: anywhere; font-size: 14px; }
     footer { padding: 22px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
     .footer-row { display: flex; justify-content: space-between; gap: 20px; }
     .disclaimer { max-width: 770px; margin: 0; }
@@ -228,12 +244,12 @@
         Menu
       </button>
       <nav class="nav-links" id="primary-nav" aria-label="Primary navigation">
-        <a href="#profile">Profile</a>
-        <a href="#appointments">Appointments</a>
-        <a href="#education">Education</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a class="nav-contact" href="#contact">Contact</a>
+        <a href="#top">Profile</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="education.html">Education</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a class="nav-contact" href="#contact-dialog">Contact</a>
       </nav>
     </div>
   </header>
@@ -251,7 +267,7 @@
                 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M7 14h10v7H7z"/><path d="M17 11h.01"/></svg>
                 Print / save CV
               </button>
-              <a class="button secondary" href="#appointments">Explore profile <span aria-hidden="true">↓</span></a>
+              <a class="button secondary" href="appointments.html">Explore profile <span aria-hidden="true">↓</span></a>
             </div>
           </div>
           <div class="hero-visual reveal">
@@ -290,125 +306,6 @@
       </div>
     </section>
 
-    <section class="section" id="appointments" aria-labelledby="appointments-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div><p class="section-kicker">02 / Experience</p><h2 id="appointments-title">Appointments &amp; service</h2></div>
-          <p class="section-intro">Current roles first. Expand an entry for responsibilities or selected contributions.</p>
-        </div>
-        <div class="timeline">
-          <article class="timeline-entry">
-            <span class="timeline-date">[Year] – Present</span>
-            <details>
-              <summary><h3>[Academic rank], Department of Neurosurgery</h3><p>[University or health system] · [City, State]</p></summary>
-              <div class="detail-copy"><p>[Add verified clinical, academic, or leadership responsibilities. Keep institutional descriptions precise and approved.]</p></div>
-            </details>
-            <span class="entry-toggle" aria-hidden="true">+</span>
-          </article>
-          <article class="timeline-entry">
-            <span class="timeline-date">[Year] – [Year]</span>
-            <details>
-              <summary><h3>[Prior role or appointment]</h3><p>[Department or organization] · [City, State]</p></summary>
-              <div class="detail-copy"><p>[Add a concise description of the role and relevant contributions.]</p></div>
-            </details>
-            <span class="entry-toggle" aria-hidden="true">+</span>
-          </article>
-          <article class="timeline-entry">
-            <span class="timeline-date">[Year] – Present</span>
-            <details>
-              <summary><h3>[Committee, society, or community role]</h3><p>[Organization] · [Role]</p></summary>
-              <div class="detail-copy"><p>[Add dates, scope, and selected contributions. Omit any confidential or patient-identifying details.]</p></div>
-            </details>
-            <span class="entry-toggle" aria-hidden="true">+</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="education" aria-labelledby="education-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div><p class="section-kicker">03 / Training</p><h2 id="education-title">Education &amp; credentials</h2></div>
-          <p class="section-intro">List programs, degrees, and board certifications with accurate dates and awarding bodies.</p>
-        </div>
-        <div class="timeline">
-          <article class="timeline-entry">
-            <span class="timeline-date">[Year] – [Year]</span>
-            <details>
-              <summary><h3>[Fellowship / subspecialty training]</h3><p>[Institution] · [City, State]</p></summary>
-              <div class="detail-copy"><p>[Optional: verified focus, faculty role, or distinction.]</p></div>
-            </details>
-            <span class="entry-toggle" aria-hidden="true">+</span>
-          </article>
-          <article class="timeline-entry">
-            <span class="timeline-date">[Year] – [Year]</span>
-            <details>
-              <summary><h3>Residency, [Neurosurgery]</h3><p>[Institution] · [City, State]</p></summary>
-              <div class="detail-copy"><p>[Optional: verified program details or distinction.]</p></div>
-            </details>
-            <span class="entry-toggle" aria-hidden="true">+</span>
-          </article>
-          <article class="timeline-entry">
-            <span class="timeline-date">[Year]</span>
-            <details>
-              <summary><h3>[Degree], [Field]</h3><p>[University] · [City, State]</p></summary>
-              <div class="detail-copy"><p>[Optional: thesis, honors, or relevant academic work.]</p></div>
-            </details>
-            <span class="entry-toggle" aria-hidden="true">+</span>
-          </article>
-          <article class="timeline-entry">
-            <span class="timeline-date">[Year / status]</span>
-            <details>
-              <summary><h3>Board certification &amp; licensure</h3><p>[Certifying board] · [State license, if appropriate]</p></summary>
-              <div class="detail-copy"><p>Verify status, dates, and any public verification links before publishing.</p></div>
-            </details>
-            <span class="entry-toggle" aria-hidden="true">+</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section research-band" id="research" aria-labelledby="research-title">
-      <div class="wrap research-grid">
-        <div><p class="section-kicker">04 / Scholarship</p><h2 id="research-title">Questions that move the field forward</h2></div>
-        <div>
-          <p class="research-statement">[Summarize your research program, its aims, and your role. Support factual claims with public sources and avoid patient-identifying examples.]</p>
-          <div class="research-areas">
-            <div class="research-area">[Research theme one]</div>
-            <div class="research-area">[Research theme two]</div>
-            <div class="research-area">[Clinical trials / methods]</div>
-            <div class="research-area">[Teaching / collaboration]</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="publications" aria-labelledby="publications-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div><p class="section-kicker">05 / Selected work</p><h2 id="publications-title">Publications</h2></div>
-          <div class="pub-tools" role="search" aria-label="Filter publications">
-            <label class="skip-link" for="pub-search">Search publications</label>
-            <input id="pub-search" type="search" placeholder="Search publications" autocomplete="off">
-            <label class="skip-link" for="year-filter">Filter by year</label>
-            <select id="year-filter" aria-label="Filter publications by year"><option value="all">All years</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option></select>
-          </div>
-        </div>
-        <div class="pub-list" id="pub-list">
-          <article class="publication" data-year="2026" data-search="[publication title] [author names] [journal]">
-            <span class="pub-year">2026</span><div><h3 class="pub-title">[Publication title]</h3><p class="pub-meta">[Authors] · [Journal] · DOI: [verified DOI]</p></div><span class="pub-type">Original research</span>
-          </article>
-          <article class="publication" data-year="2025" data-search="[publication title] [author names] [journal]">
-            <span class="pub-year">2025</span><div><h3 class="pub-title">[Publication title]</h3><p class="pub-meta">[Authors] · [Journal] · PMID: [verified PubMed ID]</p></div><span class="pub-type">Review</span>
-          </article>
-          <article class="publication" data-year="2024" data-search="[publication title] [author names] [journal]">
-            <span class="pub-year">2024</span><div><h3 class="pub-title">[Publication title]</h3><p class="pub-meta">[Authors] · [Journal] · DOI: [verified DOI]</p></div><span class="pub-type">Book chapter</span>
-          </article>
-        </div>
-        <p class="empty-state" id="empty-state" role="status">No publications match those filters.</p>
-      </div>
-    </section>
-
     <section class="section contact-section" id="contact" aria-labelledby="contact-title">
       <div class="wrap contact-panel">
         <div><p class="section-kicker">06 / Contact</p><h2 id="contact-title">For academic and professional inquiries</h2><p>For patient care or referrals, use the official hospital contact and secure patient portal. Do not send medical information by email.</p></div>
@@ -424,14 +321,25 @@
     </div>
   </footer>
 
+  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title" aria-describedby="contact-dialog-description">
+    <div class="dialog-content">
+      <div class="dialog-heading">
+        <div><p class="section-kicker">Get in touch</p><h2 id="contact-dialog-title">Contact</h2><p id="contact-dialog-description">For academic and professional inquiries.</p></div>
+        <button class="dialog-close" type="button" aria-label="Close contact dialog">×</button>
+      </div>
+      <div class="contact-methods">
+        <a class="contact-method" href="mailto:[professional-email]"><span>Gmail</span><strong>[Add Gmail address]</strong></a>
+        <a class="contact-method" href="tel:[mobile-number]"><span>Mobile</span><strong>[Add mobile number]</strong></a>
+      </div>
+    </div>
+  </dialog>
+
   <script>
     const menuButton = document.querySelector("#menu-button");
     const primaryNav = document.querySelector("#primary-nav");
     const printButton = document.querySelector("#print-cv");
-    const searchInput = document.querySelector("#pub-search");
-    const yearFilter = document.querySelector("#year-filter");
-    const publications = [...document.querySelectorAll(".publication")];
-    const emptyState = document.querySelector("#empty-state");
+    const contactDialog = document.querySelector("#contact-dialog");
+    const contactClose = contactDialog.querySelector(".dialog-close");
 
     menuButton.addEventListener("click", () => {
       const isOpen = menuButton.getAttribute("aria-expanded") === "true";
@@ -446,32 +354,19 @@
       }
     });
 
-    printButton.addEventListener("click", () => window.print());
-
-    function filterPublications() {
-      const query = searchInput.value.trim().toLowerCase();
-      const year = yearFilter.value;
-      let visibleCount = 0;
-
-      publications.forEach((publication) => {
-        const matchesQuery = publication.dataset.search.toLowerCase().includes(query);
-        const matchesYear = year === "all" || publication.dataset.year === year;
-        const isVisible = matchesQuery && matchesYear;
-        publication.hidden = !isVisible;
-        if (isVisible) visibleCount += 1;
-      });
-
-      emptyState.style.display = visibleCount === 0 ? "block" : "none";
-    }
-
-    searchInput.addEventListener("input", filterPublications);
-    yearFilter.addEventListener("change", filterPublications);
-
-    document.querySelectorAll(".timeline-entry details").forEach((details) => {
-      const indicator = details.parentElement.querySelector(".entry-toggle");
-      indicator.addEventListener("click", () => { details.open = !details.open; });
-      details.addEventListener("toggle", () => { indicator.textContent = details.open ? "−" : "+"; });
+    primaryNav.querySelector(".nav-contact").addEventListener("click", (event) => {
+      event.preventDefault();
+      contactDialog.showModal();
     });
+
+    contactClose.addEventListener("click", () => contactDialog.close());
+    contactDialog.addEventListener("click", (event) => {
+      if (event.target === contactDialog) contactDialog.close();
+    });
+
+    if (window.location.hash === "#contact-dialog") contactDialog.showModal();
+
+    printButton.addEventListener("click", () => window.print());
   </script>
 </body>
 </html>
